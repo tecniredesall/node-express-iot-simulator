@@ -1,0 +1,129 @@
+extends layout.pug
+
+block content
+  .album.py-5.bg-light
+    .container
+      //- .row
+      //-   each user in users
+      //-     +thumbCard(user)
+      .row
+        .col-md-6
+          .card.border-dark
+            .card-header
+              h3.card-title Send message to socket
+            .card-body
+              form#socket-submission
+                //- (onsubmit='return send_message_to_socket(this)')
+                //- .form-group.row
+                //-   label.col-sm-2.col-form-label(for='inputIoTIP') IP Address
+                //-   .col-sm-10
+                //-     input#inputIoTIP.form-control(type='IP Address' placeholder='IP Address')
+                .row
+                  .col-md-3.col-3 IoT Address:
+                  .col-md-9.col-9
+                    p !{ip_address}
+                .row
+                  .col-md-3.col-3 Socket Address:
+                  .col-md-9.col-9
+                    p !{socket_address}:!{socket_port}
+                .form-group.row
+                  label.col-sm-3.col-form-label(for='message') Message
+                  .col-sm-9
+                    textarea#message.form-control(name='message' rows='3')
+                .form-group.row
+                  .col-sm-10
+                    button.btn.btn-primary(type='submit') Send
+                    //- a.btn.btn-large.btn-success(onClick='send_message_to_socket(); return false;') HOLA
+              //- .card-footer.text-muted
+              //-   .btn-group
+              //-     button.btn.btn-sm.btn-outline-secondary View
+              //-     button.btn.btn-sm.btn-outline-secondary Edit
+                small.text-muted 9 mins
+        .col-md-6
+          .card.border-dark
+            .card-header
+              h3.card-title Send message to sorter
+            .card-body
+              form#sorter-submission
+                .row
+                  .col-md-4.col-4 Socket Address:
+                  .col-md-8.col-8
+                    p !{socket_address}:!{socket_port}
+                .row
+                  .col-md-4.col-4 Sorter Address:
+                  .col-md-8.col-8
+                    p !{ip_address}:!{sorter_port}
+                      span#is-sorter-connected
+                .row
+                  .col-md-4.col-4 Request lapse:
+                  .col-md-8.col-8
+                    p !{sorter_request_lapse} ms.
+                //- .form-group.row
+                //-   label.col-sm-3.col-form-label(for='message') Message
+                //-   .col-sm-9
+                //-     pre
+                //-       code {"code":600}
+                .form-group.row
+                  label.col-sm-4.col-form-label(for='lot-id') Lot ID:
+                  .col-sm-8
+                    input#lot-id.form-control(type='Lot ID' placeholder='Lot ID' value='0000001')
+                .row
+                  .col-md-4.col-4 Pooling:
+                  .col-md-8.col-8
+                    .custom-control.custom-switch
+                      input#sorter-pooling.custom-control-input(type='checkbox')
+                      label.custom-control-label(for='sorter-pooling')
+            .card-footer.text-muted
+              .btn-group
+                button.btn.btn-sm.btn-outline-secondary(id='connect-to-sorter') Check it
+                //- button.btn.btn-sm.btn-outline-secondary(id='connect-to-sorter') Start it
+                //- button.btn.btn-sm.btn-outline-secondary(id='disconnect-to-sorter') Stop it
+      .row(style='margin-top:15px')
+        .col-md-12
+          .card.border-dark.mb-12.shadow-sm
+            .card-header
+              h3.card-title Last Metric
+            .card-body
+              form.text-right
+                .form-group.row
+                  label.col-sm-5.col-form-label Filter by IP
+                  .col-sm-7
+                    select#ip_address_combo1.custom-select
+                      option(selected) Open this select menu
+              #metrics
+            .card-footer.text-muted
+              .btn-group
+                button.btn.btn-sm.btn-outline-secondary(id='filter-button') Filter it!
+                button.btn.btn-sm.btn-outline-secondary(id='reset-metrics') Reset sorter metrics
+              //- small.text-muted 9 mins
+      .row(style='margin-top:15px')
+        .col-md-12
+          .card.border-dark.mb-12.shadow-sm
+            .card-header
+              h3.card-title Connections
+            .card-body
+              .row
+                .col-md-5.col-5
+                  strong Location:
+                .col-md-7.col-7
+                  p#location
+              .row
+                .col-md-5.col-5
+                  strong Connected IPs:
+                .col-md-7.col-7
+                  p#connectedIPs
+              .row
+                .col-md-5.col-5
+                  strong Devices Catalog:
+                .col-md-7.col-7
+                  p#devicesCatalog
+              .row
+                .col-md-3.col-3
+                  strong Check connection:
+                .col-md-7.col-7
+                  select#ip_address_combo2.custom-select
+                .col-md-2.col-2
+                  p#is-it-connected
+            .card-footer.text-muted
+              .btn-group
+                button.btn.btn-sm.btn-outline-secondary(id='get-ip-connection-button') Check it!

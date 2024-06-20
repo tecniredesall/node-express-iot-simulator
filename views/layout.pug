@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title Capucas WebSocket Client
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+    style.
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      footer {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      footer p {
+        margin-bottom: .25rem;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      code {
+        font-family: MyFancyCustomFont, monospace;
+        font-size: inherit;
+      }
+
+      /* Code in text */
+      pre > code,
+      p > code,
+      li > code,
+      dd > code,
+      td > code {
+        background: #ffeff0;
+        word-wrap: break-word;
+        box-decoration-break: clone;
+        padding: .1rem .3rem .2rem;
+        border-radius: .2rem;
+      }
+
+  body
+    include includes/header.pug
+
+    main#main
+      include includes/jumbotron.pug
+
+      block content
+
+    include includes/footer.pug
+    
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
+    script(src='https://cdn.socket.io/4.0.0/socket.io.min.js' integrity='sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js' integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script(src='main.js')
+
+    
